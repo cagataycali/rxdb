@@ -40,7 +40,9 @@
     "build:browserify": "npm run transpile && browserify dist/lib/browserify.index.js > dist/rxdb.browserify.js && uglifyjs --compress --mangle --output dist/rxdb.browserify.min.js -- dist/rxdb.browserify.js",
     "disc": "npm run transpile && browserify dist/lib/index.js --full-paths | uglifyjs --compress --mangle | discify --open --full-paths",
     "preversion": "npm run lint && npm run test",
-    "dev": "watch 'npm test' src/ test/"
+    "dev": "watch 'npm test' src/ test/",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "pre-commit": [
     "lint"
@@ -59,7 +61,8 @@
     "regexp-clone": "0.0.1",
     "rxjs": "5.0.0-rc.4",
     "sliced": "1.0.1",
-    "spark-md5": "0.0.5"
+    "spark-md5": "0.0.5",
+    "snyk": "^1.192.3"
   },
   "devDependencies": {
     "assert": "1.4.1",
@@ -123,5 +126,6 @@
     "watchify": "3.7.0",
     "webpack": "2.1.0-beta.27",
     "webpack-dev-server": "2.1.0-beta.11"
-  }
+  },
+  "snyk": true
 }
